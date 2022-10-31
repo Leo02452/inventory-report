@@ -33,7 +33,7 @@ class SimpleReport:
         )
 
     @classmethod
-    def get_company_with_more_products(cls, products_list):
+    def get_company_products_quantity(cls, products_list):
         company_products_quantity = {}
 
         for product in products_list:
@@ -42,6 +42,14 @@ class SimpleReport:
                 company,
                 0
             ) + 1
+
+        return company_products_quantity
+
+    @classmethod
+    def get_company_with_more_products(cls, products_list):
+        company_products_quantity = cls.get_company_products_quantity(
+            products_list
+        )
 
         return max(
             company_products_quantity,
